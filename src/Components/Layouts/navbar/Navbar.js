@@ -18,7 +18,7 @@ const Navbar = ({darktheme, darktext}) => {
 
       })
       .catch((err)=>{
-        console.log(err)
+        
       })
     }
 
