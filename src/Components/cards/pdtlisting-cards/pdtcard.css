@@ -1,0 +1,48 @@
+.list-card{
+    border: 1px solid #aaa;
+    width: 100%;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+
+}
+.listing-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+   
+}
+.listing-img-container{
+    width: 100%;
+    height: 12rem;
+    text-align: center;
+}
+.listing-details-container{
+    padding-top: 2rem;
+    min-height: 9rem;
+   
+}
+.name{
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+}
+.price{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.listing-button{
+    display: inline-block;
+    background-color: black;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+    margin-top: 1rem;
+    border-radius: 4px;
+    transition: 0.2s ease-in;
+}
+.listing-button:hover{
+    background-color: rgb(235, 100, 51);
+}

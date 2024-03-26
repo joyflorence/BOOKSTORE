@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Shippori Mincho", serif;
+}
+:root{
+    --primary-color: #fb995d;
+    
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: "Noto Sans Ethiopic", sans-serif;
+   
+}
+h1{
+    font-size: 2.5rem;  
+}
+.container{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.primary{
+    color:  var(--primary-color);
+}
+
+span{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.button-primary{
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    margin-top: 2rem;
+    box-shadow: 2px 2px 5px #ddd;
+    border-radius: 1rem;
+    transition: 0.1s ease-in;
+   margin-bottom: 3rem;
+   border: none;
+}
+.button-primary:hover{
+    background-color: #333;
+}

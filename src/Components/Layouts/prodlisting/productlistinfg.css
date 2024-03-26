@@ -1,0 +1,11 @@
+.prodlisting-container{
+    margin-top: 5%;
+    margin-bottom: 4%;
+   
+}
+.listing-container{
+    padding: 4rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+}

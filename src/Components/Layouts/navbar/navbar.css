@@ -1,0 +1,54 @@
+.navbar-container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 1rem 0;
+    
+}
+.container{
+   width: 80%;
+
+}
+.cart{
+    cursor: pointer;
+    color: #fff;
+   
+}
+.logo{
+    color: white;
+    font-size: 1.7rem;
+    text-decoration: none;
+   font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+
+}
+.nav-links, .nav-links-dark{
+    color:#fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding-left: 20px;
+    transition: 0.1s ease-in;
+    cursor: pointer;
+ 
+}
+.nav-links-dark{
+    color: #333;
+}
+.nav-links-dark:hover{
+    color: var(--primary-color);
+
+}
+
+.nav-links:hover{
+    color: var(--primary-color);
+}
+.background-dark{
+    background-color: #333;
+}
+.background-transparent{
+   background-color: transparent; 
+}
+.relative{
+    position: relative !important;
+}

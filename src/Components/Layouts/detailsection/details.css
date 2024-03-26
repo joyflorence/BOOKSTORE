@@ -1,0 +1,48 @@
+.detail-section.container{
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-img-container,.book-detail-container{
+    width: 50%;
+}
+
+.book-img-container{
+    text-align: center;
+   
+}
+
+.book-img-container img{
+    border: 1px solid #333;
+    height: 9px;
+}
+.book-detail-container h2{
+    font-size: 2rem;
+    
+}
+.book-detail-container h3{
+    font-size: 1.5rem;
+    padding-top: 1rem;
+   
+    color: var(--primary-color);
+    
+    
+}
+.book-detail-container p{
+    font-size: 20px;
+  
+    
+}
+.book-description{
+    line-height: 1.7rem;
+    
+}
+.book{
+    width: 20rem;
+  
+}
