@@ -22,7 +22,7 @@ const CartItemCard = ({bookData}) => {
             <h3>{bookData.book_title}</h3>
             <p>{bookData.author_name}</p>
             <p>{bookData.genre_name}</p>
-            <p className='cart-item-price'>${bookData.price}</p>
+            <p className='cart-item-price'>Ughs{bookData.price}</p>
 
             <button onClick={handleRemove} className='delete-button'>Remove From Cart</button>
            

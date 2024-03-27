@@ -27,7 +27,7 @@ const Navbar = ({darktheme, darktext}) => {
       <Link to='/' className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Home</Link>
       <Link to='/books' className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Books</Link>
       <Link to='/login' className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Login</Link>
-      <Link to='/signup' className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Signup</Link>
+      <Link to='/signup' className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Signup</Link> 
       </nav>
     )
 
