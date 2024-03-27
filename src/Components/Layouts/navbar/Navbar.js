@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import './navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { userContext } from '../../../App'
-import {ReactComponent as Cart} from '../../../images/cart.svg'
+import cart from '../../../images/cart.png'
 import { getAuth, signOut } from 'firebase/auth'
 import app from '../../../firebase/Firebase'
 
@@ -36,7 +36,10 @@ const Navbar = ({darktheme, darktext}) => {
       <Link to='/' className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Home</Link>
       <Link to='/books' className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Books</Link>
       <a onClick={handleLogout} className={`${darktext ? 'nav-links-dark': 'nav-links'}`}>Logout</a>
-      <Link to='/cart' className='cart'><Cart/></Link>
+      <div className='cart--container'>
+      <Link to='/cart' className='cart'><img src={cart}/></Link>
+      <div className='count'><p>0</p></div>
+      </div>
      </nav>
     )
    

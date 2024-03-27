@@ -49,7 +49,7 @@ const DetailsSection = () => {
                 <h2>{bookData.book_title}</h2>
                 <p className='primary'>{bookData.author_name}</p>
                 <p className='book-description'>{bookData.book_description}</p>
-                <h3>${bookData.price}</h3>
+                <h3>Ughs{bookData.price}</h3>
                 <a onClick={handleAddToCart} className='button-primary'>Add To Cart</a>
 
             </div>

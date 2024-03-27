@@ -11,7 +11,7 @@ const PdtListingCard = ({bookData}) => {
     <div className='listing-details-container'>
         <h3>{bookData.book_title}</h3>
         <p className='name'>{bookData.author_name}</p>
-        <p className='price'>${bookData.price}</p>
+        <p className='price'>Ughs{bookData.price}</p>
     </div>
    
     <div className='card-button-container'>

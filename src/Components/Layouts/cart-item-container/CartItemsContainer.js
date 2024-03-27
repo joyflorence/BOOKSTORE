@@ -27,7 +27,7 @@ const CartItemsContainer = () => {
           {cartItems.map((item) => (
             <CartItemCard key={item.id} bookData={item}/>
           ))}
-          <h2>TotalAmount = ${totalAmount}</h2>
+          <h2>TotalAmount = Ughs{totalAmount}</h2>
          
           <StripeCheckout
           name='Book Checkout'

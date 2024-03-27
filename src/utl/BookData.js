@@ -17,7 +17,7 @@ export const BookData=[
     },
     {
       id:2,
-      book_title:'The Doom',
+      book_title:'Camping In Kenya',
       booK_genre:'Poem',
       book_availability:'few units left',
       book_description:'',
