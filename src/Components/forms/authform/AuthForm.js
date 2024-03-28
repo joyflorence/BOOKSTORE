@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import app from '../../../firebase/Firebase';
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateEmail,
-  updatePassword,
-} from 'firebase/auth';
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 
 const AuthForm = ({ buttonName }) => {
   const [email, setEmail] = useState('');
@@ -34,20 +28,6 @@ const AuthForm = ({ buttonName }) => {
         .catch((err) => {
           console.log(err);
         });
-    } else if (buttonName === 'Update') {
-      const user = auth.currentUser;
-
-      if (user) {
-        updateEmail(user, email)
-          .then(() => {
-            updatePassword(user, password)
-              .then(() => {
-                navigate('/');
-              })
-              .catch((err) => console.log(err));
-          })
-          .catch((err) => console.log(err));
-      }
     }
   };
 

@@ -17,7 +17,7 @@
 }
 .nav-links-container{
     display: flex;
-    gap: 45px;
+    gap: 20px;
 }
 .logo{
     color: white;

@@ -10,18 +10,21 @@ import SearchPage from './pages/searchpage/SearchPage';
 import BookDetailsPage from './pages/bookdetailspage/BookDetails';
 import Login from './pages/loginpage/Login';
 import Signup from './pages/loginpage/Signup';
-import UpdateUserPage from './pages/updateuserpage/UpdateUserPage';
 import app from './firebase/Firebase';
 import CartPage from './pages/cartpage/CartPage';
 
 export const userContext = createContext({})
-export const CartContext = createContext([])
+export const CartContext = createContext({
+  cartItems: [],
+  totalAmount: 0,
+  setCartItems: () => {},
+});
 
 function App() {
   const auth = getAuth(app);
   const[authenticatedUser, setAuthenticatedUser] = useState(null);
- const [cartItems, setCartItems] = useState([]);
- const [totalAmount, setTotalAmount] = useState(0)
+  const [cartItems, setCartItems] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0)
 
   useEffect(()=>{
     onAuthStateChanged(auth, (user) =>{
@@ -29,27 +32,20 @@ function App() {
         setAuthenticatedUser(user);
       } else{
         setAuthenticatedUser(null)
-      }
-    })
-  },[])
+      }})},[])
 
   useEffect(() =>{
    let total = 0;
    cartItems.forEach((item) =>{
     console.log(item.price);
-    total = total + parseInt(item.price);
-   })
-   setTotalAmount(total);
-
-
-  },[cartItems])
+    total = total + parseInt(item.price);})
+   setTotalAmount(total);},[cartItems])
 
   return ( 
     <Router>
      <ScrollToTop>
+     <CartContext.Provider value={{cartItems, totalAmount, setCartItems}}>
       < userContext.Provider value = {authenticatedUser}>
-        <CartContext.Provider value={{cartItems, totalAmount,  setCartItems}}>
-         
           <Routes>
               <Route path='/' element={<HomePage/>}/>
               <Route path='/books' element={<BookPage/>}/>
@@ -58,12 +54,10 @@ function App() {
               <Route path='/book-details/:id' element={<BookDetailsPage/>}/>
               <Route path='/signup' element={<Signup/>}/>
               <Route path='/login' element={<Login/>}/>  
-              <Route path='/update' element={<UpdateUserPage/>}/> 
-            
+             
          </Routes>
-        
-        </CartContext.Provider>
      </userContext.Provider>
+     </CartContext.Provider>
      </ScrollToTop>
      </Router>
       
