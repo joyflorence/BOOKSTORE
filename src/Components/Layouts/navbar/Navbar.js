@@ -49,6 +49,12 @@ const Navbar = ({ darktheme, darktext }) => {
       <Link to="/books" className={`${darktext ? 'nav-links-dark' : 'nav-links'}`}>
         Books
       </Link>
+      <Link to="/Profile" className={`${darktext ? 'nav-links-dark' : 'nav-links'}`}>
+        UserProfile
+      </Link>
+      <Link to="/Order" className={`${darktext ? 'nav-links-dark' : 'nav-links'}`}>
+        OrderHistory
+      </Link>
       <a onClick={handleLogout} className={`${darktext ? 'nav-links-dark' : 'nav-links'}`}>
         Logout
       </a>

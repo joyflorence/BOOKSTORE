@@ -1,29 +1,29 @@
 .footer{
   background-color: #222;
- padding: .5rem 0;
+ padding: 0.1rem 0;
 }
 .footer h2{
     color: white;
 }
 .footer p{
     color: white;
-    padding-top: 2rem;
+    padding-top: .9rem;
     font-size: 1.8rem;
 }
 .footer-form{
-    padding-top:1rem;
+    padding-top:.2rem;
     width: 20%;
 }
 .form-input{
-    width: 290%;
-    padding: .6rem;
+    width: 280%;
+    padding: .4rem;
     display: inline-block;
     outline: none;
     border-radius: 5px;
     font-size: 1.1rem;
 }
 .form-group{
-    padding: .5rem 0;
+    padding: .2rem 0;
 }
 .form-label{
     color: #fff;

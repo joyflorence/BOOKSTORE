@@ -27,9 +27,7 @@ const AuthForm = ({ buttonName }) => {
         })
         .catch((err) => {
           console.log(err);
-        });
-    }
-  };
+        });}};
 
   return (
     <div>
