@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Hotpg from '../../images/books/show.jpg'
+import Hotpg from '../../images/showcase.jpg'
 import app from '../../firebase/Firebase';
 import Navbar from '../../Components/Layouts/navbar/Navbar';
 import {getAuth, updateProfile} from 'firebase/auth';
