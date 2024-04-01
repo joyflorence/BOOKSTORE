@@ -12,8 +12,6 @@ import Login from './pages/loginpage/Login';
 import Signup from './pages/loginpage/Signup';
 import app from './firebase/Firebase';
 import CartPage from './pages/cartpage/CartPage';
-import UserProfile from './pages/userprofile/UserProfile';
-import OrderHistory from './order/OrderHistory';
 
 
 export const userContext = createContext({})
@@ -56,10 +54,7 @@ function App() {
               <Route path='/search' element={<SearchPage/>}/>
               <Route path='/book-details/:id' element={<BookDetailsPage/>}/>
               <Route path='/signup' element={<Signup/>}/>
-              <Route path='/login' element={<Login/>}/>  
-              <Route path='/Profile' element={<UserProfile/>}/>
-              <Route path='/Order' element={< OrderHistory/>}/>
-             
+              <Route path='/login' element={<Login/>}/>        
          </Routes>
      </userContext.Provider>
      </CartContext.Provider>
