@@ -17,6 +17,7 @@ import Profile from './pages/profile/Profile';
 import OrderDetails from './Components/order/OrderDetails';
 
 
+
 export const userContext = createContext({})
 export const OrderContext = createContext({})
 export const CartContext = createContext({
@@ -63,7 +64,8 @@ function App() {
               <Route path='/login' element={<Login/>}/>  
               <Route path='/admin' element={<Admin/>}/> 
               <Route path='/profile' element={<Profile/>}/> 
-              <Route path='/order' element={<OrderDetails/>}/>     
+                
+              <Route path='/order' element={<OrderDetails/>}/> 
          </Routes>
        </OrderContext.Provider>
      </userContext.Provider>

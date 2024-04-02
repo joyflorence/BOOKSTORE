@@ -67,6 +67,7 @@ import { userContext } from '../../App';
 import Hotpg from '../../images/showcase.jpg'
 import { updateProfile } from 'firebase/auth';
 import './profile.css'
+import Navbar from '../../Components/Layouts/navbar/Navbar';
 
 const Profile = () => {
   const authenticatedUser = useContext(userContext);
@@ -91,9 +92,7 @@ const Profile = () => {
 
   return (
     <div>
-      <div className='signup-img-container'>
-      <img src={Hotpg} alt='book'/>
-      </div>
+     <Navbar darktheme={true}/>
      
       {isEditing ? (
         <form className='form-profile'>
