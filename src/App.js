@@ -12,9 +12,13 @@ import Login from './pages/loginpage/Login';
 import Signup from './pages/loginpage/Signup';
 import app from './firebase/Firebase';
 import CartPage from './pages/cartpage/CartPage';
+import Admin from './Components/adminpanel/Admin';
+import Profile from './pages/profile/Profile';
+import OrderDetails from './Components/order/OrderDetails';
 
 
 export const userContext = createContext({})
+export const OrderContext = createContext({})
 export const CartContext = createContext({
   cartItems: [],
   totalAmount: 0,
@@ -26,6 +30,7 @@ function App() {
   const[authenticatedUser, setAuthenticatedUser] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0)
+  const [orderHistory, setOrderHistory] = useState([]);
 
   useEffect(()=>{
     onAuthStateChanged(auth, (user) =>{
@@ -47,15 +52,20 @@ function App() {
      <ScrollToTop>
      <CartContext.Provider value={{cartItems, totalAmount, setCartItems}}>
       < userContext.Provider value = {authenticatedUser}>
-          <Routes>
+       <OrderContext.Provider value={{ orderHistory, setOrderHistory }}>
+       <Routes>
               <Route path='/' element={<HomePage/>}/>
               <Route path='/books' element={<BookPage/>}/>
               <Route path='/cart' element={<CartPage/>}/>
               <Route path='/search' element={<SearchPage/>}/>
               <Route path='/book-details/:id' element={<BookDetailsPage/>}/>
               <Route path='/signup' element={<Signup/>}/>
-              <Route path='/login' element={<Login/>}/>        
+              <Route path='/login' element={<Login/>}/>  
+              <Route path='/admin' element={<Admin/>}/> 
+              <Route path='/profile' element={<Profile/>}/> 
+              <Route path='/order' element={<OrderDetails/>}/>     
          </Routes>
+       </OrderContext.Provider>
      </userContext.Provider>
      </CartContext.Provider>
      </ScrollToTop>

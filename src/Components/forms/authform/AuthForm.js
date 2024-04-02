@@ -79,3 +79,115 @@ const AuthForm = ({ buttonName }) => {
 };
 
 export default AuthForm;
+
+
+
+
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import app from '../../../firebase/Firebase';
+// import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+
+// const AuthForm = ({ buttonName, isAdmin }) => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [username, setUsername] = useState('');
+//   const navigate = useNavigate();
+//   const auth = getAuth(app);
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+
+//     if (isAdmin) {
+//       if (buttonName === 'Login') {
+//         signInWithEmailAndPassword(auth, email, password)
+//           .then(() => {
+//             navigate('/admin-panel');
+//           })
+//           .catch((err) => console.log(err));
+//       } else if (buttonName === 'Sign up') {
+//         createUserWithEmailAndPassword(auth, email, password)
+//           .then((userCredential) => {
+//             const user = userCredential.user;
+//             user.updateProfile({
+//               displayName: username
+//             })
+//               .then(() => {
+//                 navigate('/admin-panel');
+//               })
+//               .catch((err) => console.log(err));
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//           });
+//       }
+//     } else {
+//       if (buttonName === 'Login') {
+//         signInWithEmailAndPassword(auth, email, password)
+//           .then(() => {
+//             navigate('/');
+//           })
+//           .catch((err) => console.log(err));
+//       } else if (buttonName === 'Sign up') {
+//         createUserWithEmailAndPassword(auth, email, password)
+//           .then((userCredential) => {
+//             userCredential.user.displayName = username;
+//             navigate('/');
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//           });
+//       }
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmit}>
+//         {isAdmin && buttonName === 'Sign up' && (
+//           <div className="group">
+//             <label>Username</label>
+//             <input
+//               type="text"
+//               className="form-input"
+//               placeholder="Enter your username"
+//               value={username}
+//               onChange={(event) => setUsername(event.target.value)}
+//               required
+//             />
+//           </div>
+//         )}
+
+//         <div className="group">
+//           <label>Email</label>
+//           <input
+//             type="email"
+//             className="form-input"
+//             placeholder="Enter your email"
+//             autoComplete="off"
+//             value={email}
+//             onChange={(event) => setEmail(event.target.value)}
+//             required
+//           />
+//         </div>
+//         <div className="group">
+//           <label>Password</label>
+//           <input
+//             type="password"
+//             className="form-input"
+//             placeholder="Enter your password"
+//             value={password}
+//             onChange={(event) => setPassword(event.target.value)}
+//             required
+//           />
+//         </div>
+
+//         <div className="form-group">
+//           <input type="submit" className="button-primary" value={buttonName} />
+//         </div>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default AuthForm;

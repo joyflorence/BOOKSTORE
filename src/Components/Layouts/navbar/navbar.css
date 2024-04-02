@@ -65,17 +65,7 @@
     width: 50px;
     margin-right: 0px;
 }
-.count{
-    color: #fff;
-    font-size: 30px;
-    font-weight: 700;
-    border-radius: 50%;
-    float: left;
-    margin-left: -15px;
-    margin-top: -7px;
-    
-   
-}
+
 
 /* Media Queries */
 @media (max-width: 768px) {
@@ -83,4 +73,48 @@
       flex-direction: column;
       align-items: center;
     }
+}
+
+
+.user{
+    color: #fff;
+    margin-top: 15px;
+    margin-left: 6px;
+}
+.user:hover{
+    color:  var(--primary-color);
+}
+
+
+.user-icon {
+position: relative;
+cursor: pointer;
+}
+
+  
+.profile-dropdown {
+position: absolute;
+top: 100%; 
+right: 1; 
+background-color: #fff; 
+border: 1px solid #ccc; 
+padding: 8px; 
+z-index: 1; 
+opacity: 0; 
+transition: opacity 0.2s ease-in-out;
+}
+
+.user-icon:hover .profile-dropdown {
+opacity: 1; 
+}
+
+.profile-dropdown a {
+display: block;
+padding: 4px 8px;
+color: #333; 
+text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+background-color: #f0f0f0; 
 }
