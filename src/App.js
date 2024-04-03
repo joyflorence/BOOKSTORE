@@ -14,7 +14,7 @@ import app from './firebase/Firebase';
 import CartPage from './pages/cartpage/CartPage';
 import Admin from './Components/adminpanel/Admin';
 import Profile from './pages/profile/Profile';
-import OrderDetails from './Components/order/OrderDetails';
+
 
 
 
@@ -65,7 +65,6 @@ function App() {
               <Route path='/admin' element={<Admin/>}/> 
               <Route path='/profile' element={<Profile/>}/> 
                 
-              <Route path='/order' element={<OrderDetails/>}/> 
          </Routes>
        </OrderContext.Provider>
      </userContext.Provider>

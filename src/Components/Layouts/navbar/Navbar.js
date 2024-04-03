@@ -148,9 +148,6 @@ const Navbar = ({ darktheme, darktext }) => {
             <Link to="/profile" onClick={() => setIsProfileDropdownOpen(false)}>
               Profile
             </Link>
-            <Link to="/order" onClick={() => setIsProfileDropdownOpen(false)}>
-              Orders
-            </Link>
             <a onClick={handleLogout}>Logout</a>
           </div>
         )}
