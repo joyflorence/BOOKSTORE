@@ -133,6 +133,7 @@ const Navbar = ({ darktheme, darktext }) => {
     </nav>
   );
 
+
   const showLogoutAndCart = (
     <nav className="nav-links-container">
       <Link to="/" className={`${darktext ? 'nav-links-dark' : 'nav-links'}`}>
@@ -151,6 +152,7 @@ const Navbar = ({ darktheme, darktext }) => {
             <a onClick={handleLogout}>Logout</a>
           </div>
         )}
+        
       </div>
       <div className="cart--container">
         <Link to="/cart" className="cart">

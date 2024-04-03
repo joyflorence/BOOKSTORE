@@ -64,7 +64,7 @@
 
 import React, { useContext, useState } from 'react';
 import { userContext } from '../../App';
-import Hotpg from '../../images/showcase.jpg'
+
 import { updateProfile } from 'firebase/auth';
 import './profile.css'
 import Navbar from '../../Components/Layouts/navbar/Navbar';
@@ -95,30 +95,33 @@ const Profile = () => {
      <Navbar darktheme={true}/>
      
       {isEditing ? (
-        <form className='form-profile'>
+        <form >
           
-          <div>
+          <div className='group'>
             <label htmlFor="name">Name:</label>
             <input
               type="text"
+              className='form-input'
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div>
+          <div className='group'>
             <label htmlFor="email">Email Address:</label>
             <input
               type="email"
+              className='form-input'
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className='address'>
+          <div className='group'>
             <label htmlFor="shippingAddress">Shipping Address:</label>
             <textarea
               id="shippingAddress"
+              className='form-input'
               value={shippingAddress}
               onChange={(e) => setShippingAddress(e.target.value)}
             ></textarea>

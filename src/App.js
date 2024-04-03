@@ -12,8 +12,10 @@ import Login from './pages/loginpage/Login';
 import Signup from './pages/loginpage/Signup';
 import app from './firebase/Firebase';
 import CartPage from './pages/cartpage/CartPage';
-import Admin from './Components/adminpanel/Admin';
+import Admin from './Components/adminpanel/login/Admin'
 import Profile from './pages/profile/Profile';
+import Dashboard from './Components/adminpanel/Dasbord'
+import ManageBooks from './Components/adminpanel/Manage/ManageBooks';
 
 
 
@@ -64,15 +66,15 @@ function App() {
               <Route path='/login' element={<Login/>}/>  
               <Route path='/admin' element={<Admin/>}/> 
               <Route path='/profile' element={<Profile/>}/> 
+              <Route path='/dashboard' element = {<Dashboard/>}/>
+              <Route path='/managebooks' element={<ManageBooks/>}/>
                 
          </Routes>
        </OrderContext.Provider>
      </userContext.Provider>
      </CartContext.Provider>
      </ScrollToTop>
-     </Router>
-      
-     
+     </Router>  
   );
 }
 

@@ -38,7 +38,7 @@ span{
 
 .button-primary{
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: .9rem 2rem;
     background-color: var(--primary-color);
     color: #fff;
     text-decoration: none;
@@ -51,4 +51,5 @@ span{
 }
 .button-primary:hover{
     background-color: #333;
+    cursor: pointer;
 }
