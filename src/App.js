@@ -34,6 +34,8 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0)
   const [orderHistory, setOrderHistory] = useState([]);
+  
+
 
   useEffect(()=>{
     onAuthStateChanged(auth, (user) =>{
