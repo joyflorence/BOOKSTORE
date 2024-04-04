@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth';
 import app from '../../../firebase/Firebase';
@@ -12,17 +12,43 @@ const Admin = () => {
   const [username, setUsername] = useState('');
   const [passcode, setPasscode] = useState('');
   const [isSignup, setIsSignup] = useState(false);
+  const [error, setError] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+
   const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('email');
+    const storedPassword = localStorage.getItem('password');
+    const storedRememberMe = localStorage.getItem('rememberMe');
+
+    if (storedRememberMe === 'true' && storedEmail && storedPassword) {
+      setEmail(storedEmail);
+      setPassword(storedPassword);
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleLogin = (event) => {
     event.preventDefault();
     const auth = getAuth(app);
 
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate('/dashboard');
-      })
-      .catch((err) => console.log(err));
+    .then(() => {
+      if (rememberMe) {
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        localStorage.setItem('rememberMe', rememberMe.toString());
+      } else {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+        localStorage.removeItem('rememberMe');
+      }   navigate('/dashboard');})
+      .catch((err) => {
+        setError('Invalid email or password.');
+        console.log(err);
+      });
   };
 
   const handleSignup = (event) => {
@@ -30,7 +56,7 @@ const Admin = () => {
     const auth = getAuth(app);
 
     if (passcode !== adminPasscode) {
-      console.log('Invalid passcode');
+      setError('Invalid passcode');
       return;
     }
 
@@ -44,6 +70,7 @@ const Admin = () => {
         }
       })
       .catch((err) => {
+        setError('Error signing up. Please try again.');
         console.log(err);
       });
   };
@@ -60,10 +87,14 @@ const Admin = () => {
       });
   };
 
-  
-
   const toggleSignup = () => {
     setIsSignup(!isSignup);
+    setError(''); // Reset error message when toggling between signup and login
+  };
+
+
+  const handleRememberMeChange = () => {
+    setRememberMe(!rememberMe);
   };
 
   return (
@@ -82,6 +113,19 @@ const Admin = () => {
               onChange={(event) => setUsername(event.target.value)}
               required
             />
+
+            
+          <div className="form-group">
+            <div className="remember-me">
+              <input
+                type="checkbox"
+                id="rememberMe"
+                checked={rememberMe}
+                onChange={handleRememberMeChange}
+              />
+              <label htmlFor="rememberMe">Remember Me</label>
+            </div>
+          </div>
           </div>
           <div className="group">
             <label>Email</label>
@@ -128,6 +172,8 @@ const Admin = () => {
               Login
             </button>
           </p>
+
+          {error && <p className="error-message">{error}</p>}
         </form>
       ) : (
         <form onSubmit={handleLogin}>
@@ -156,6 +202,18 @@ const Admin = () => {
           </div>
 
           <div className="form-group">
+            <div className="remember-me">
+              <input
+                type="checkbox"
+                id="rememberMe"
+                checked={rememberMe}
+                onChange={handleRememberMeChange}
+              />
+              <label htmlFor="rememberMe">Remember Me</label>
+            </div>
+            </div>
+
+          <div className="form-group">
             <input type="submit" className="button-primary" value="Login" />
           </div>
 
@@ -165,6 +223,8 @@ const Admin = () => {
               Sign Up
             </button>
           </p>
+
+          {error && <p className="error-message">{error}</p>}
         </form>
       )}
     </div>
