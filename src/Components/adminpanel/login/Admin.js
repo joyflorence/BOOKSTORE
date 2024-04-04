@@ -30,21 +30,24 @@ const Admin = () => {
     }
   }, []);
 
+  
   const handleLogin = (event) => {
     event.preventDefault();
     const auth = getAuth(app);
 
     signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      if (rememberMe) {
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
-        localStorage.setItem('rememberMe', rememberMe.toString());
-      } else {
-        localStorage.removeItem('email');
-        localStorage.removeItem('password');
-        localStorage.removeItem('rememberMe');
-      }   navigate('/dashboard');})
+      .then(() => {
+        if (rememberMe) {
+          localStorage.setItem('email', email);
+          localStorage.setItem('password', password);
+          localStorage.setItem('rememberMe', rememberMe.toString());
+        } else {
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+          localStorage.removeItem('rememberMe');
+        }
+        navigate('/dashboard');
+      })
       .catch((err) => {
         setError('Invalid email or password.');
         console.log(err);
@@ -183,7 +186,7 @@ const Admin = () => {
               type="email"
               className="form-input"
               placeholder="Enter your email"
-              autoComplete="off"
+              autoComplete="on"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
