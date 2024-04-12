@@ -17,7 +17,7 @@ const SearchPage = () => {
         searchvalue = BookData.filter((data)=>data.book_title.toLowerCase().includes(location.state.toLowerCase()))
         
         setSearchResult(searchvalue);
-    },[])
+    },[location.state])
   return (
    <section>
     <Navbar darktheme={true}/>

@@ -1,0 +1,9 @@
+.adminpro{
+    cursor: pointer;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.adminpro:hover{
+    transition:  0.3s ease-in-out;
+}
+

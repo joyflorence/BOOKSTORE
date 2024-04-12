@@ -21,6 +21,7 @@ export const BookData=[
       orderId: 2,
       id:2,
       book_title:'Camping In Kenya',
+      book_genre: 'Story',
       book_description:'',
       book_url:'https://i.pinimg.com/474x/ad/f9/98/adf9985afccb5f999c8084de4a81fd18.jpg',
       author_name:'John Arle',

@@ -7,6 +7,16 @@
     display: flex;
     justify-content: space-between;
 }
+.backtoshopping{
+    cursor: pointer;
+    padding-bottom: .9rem;
+}
+.backtoshopping:hover{
+    color: red;
+}
+.quantity{
+    padding-top: .9rem;
+}
 
 .book-img-container,.book-detail-container{
     width: 50%;
@@ -43,6 +53,8 @@
     
 }
 .book{
-    width: 20rem;
+    width: 15rem;
+    padding-top: 3rem;
+ padding-right: 2rem;
   
 }

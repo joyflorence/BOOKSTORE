@@ -1,68 +1,30 @@
-// import React,{ useContext } from 'react'
-// import './cartitemcard.css'
-// import { CartContext } from '../../../App'
 
-// const CartItemCard = ({bookData}) => {
-
-//   const{cartItems, setCartItems} = useContext(CartContext)
-
-//   const handleRemove = () =>{
-//     console.log(bookData.id)
-//     setCartItems(cartItems.filter((item)=>item.id !== bookData.id));
-   
-//   }
-
-//   return (
-//    <section>
-//       <div className='cart-items'>
-//         <div className='cart-item-img-container'>
-//             <img src={bookData.book_url} alt='cart-item-img' className='cart-item-img'/>
-//         </div>
-//         <div className='cart-item-content-container'>
-//             <h3>{bookData.book_title}</h3>
-//             <p>{bookData.author_name}</p>
-//             <p>{bookData.genre_name}</p>
-//             <p className='cart-item-price'>Ughs{bookData.price}</p>
-
-//             <button onClick={handleRemove} className='delete-button'>Delete</button>
-           
-//         </div>
-
-//     </div>
-//    </section>
-//   )
-// }
-
-// export default CartItemCard
-
-
-
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import './cartitemcard.css';
 import { CartContext } from '../../../App';
 
-const CartItemCard = ({ bookData, onQuantityChange }) => {
+const CartItemCard = ({ bookData }) => {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
-  const [total, setTotal] = useState(bookData.price);
-  
-  useEffect(() => {
-    setTotal(bookData.price * quantity);
-    onQuantityChange(bookData.id, quantity);
-  }, [quantity, bookData.price, bookData.id, onQuantityChange]);
 
   const handleRemove = () => {
     setCartItems(cartItems.filter((item) => item.id !== bookData.id));
   };
 
-  const handleQuantityDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
+  const handleQuantityChange = (e) => {
+    const newQuantity = parseInt(e.target.value);
+    setQuantity(newQuantity);
+    updateCartItemQuantity(newQuantity);
   };
 
-  const handleQuantityIncrease = () => {
-    setQuantity(quantity + 1);
+  const updateCartItemQuantity = (newQuantity) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === bookData.id) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
   };
 
   return (
@@ -74,17 +36,18 @@ const CartItemCard = ({ bookData, onQuantityChange }) => {
         <div className='cart-item-content-container'>
           <h3>{bookData.book_title}</h3>
           <p>{bookData.author_name}</p>
-          <p>{bookData.genre_name}</p>
-          <p className='cart-item-price'>Ughs{bookData.price}</p>
+          <p className='cart-item-price'>Ughs {bookData.price}</p>
 
-          <div className='cart-quantity-container'>
+          <div className='quantity-container'>
             <label htmlFor='quantity'>Quantity:</label>
-            <button onClick={handleQuantityDecrease}>-</button>
-            <span>{quantity}</span>
-            <button onClick={handleQuantityIncrease}>+</button>
+            <input
+              type='number'
+              id='quantity'
+              value={quantity}
+              min='1'
+              onChange={handleQuantityChange}
+            />
           </div>
-
-          <p className='cart-item-total'>Total: Ughs{total}</p>
 
           <button onClick={handleRemove} className='delete-button'>
             Delete
@@ -96,5 +59,6 @@ const CartItemCard = ({ bookData, onQuantityChange }) => {
 };
 
 export default CartItemCard;
+
 
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { BookData } from '../../../utl/BookData';
+import Navbar from '../../Layouts/navbar/Navbar';
 
 const ManageBooks = () => {
   const [books, setBooks] = useState(BookData);
@@ -13,11 +14,10 @@ const ManageBooks = () => {
     authorName: '',
     price: '',
   });
+  const [popupMessage, setPopupMessage] = useState('');
 
-  // Function to handle opening the modal for adding/editing a book
   const openModal = (bookId = null) => {
     if (bookId) {
-      // Editing existing book
       const bookToEdit = books.find((book) => book.id === bookId);
       setModalData({
         bookId,
@@ -27,8 +27,8 @@ const ManageBooks = () => {
         authorName: bookToEdit.author_name,
         price: bookToEdit.price,
       });
+      setIsModalOpen(true);
     } else {
-      // Adding new book
       setModalData({
         bookId: null,
         bookTitle: '',
@@ -37,19 +37,18 @@ const ManageBooks = () => {
         authorName: '',
         price: '',
       });
+      setPopupMessage(''); // Clear the popup message
+      setIsModalOpen(true);
     }
-    setIsModalOpen(true);
   };
+  
 
-  // Function to handle closing the modal
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  // Function to handle saving the changes made in the modal
   const saveChanges = () => {
     if (modalData.bookId) {
-      // Editing existing book
       const updatedBooks = books.map((book) => {
         if (book.id === modalData.bookId) {
           return {
@@ -65,9 +64,7 @@ const ManageBooks = () => {
       });
       setBooks(updatedBooks);
     } else {
-      // Adding new book
       const newBook = {
-        orderId: books.length,
         id: books.length,
         book_title: modalData.bookTitle,
         book_description: modalData.bookDescription,
@@ -80,26 +77,20 @@ const ManageBooks = () => {
     closeModal();
   };
 
-  // Function to handle deleting a book
   const handleDeleteBook = (bookId) => {
-    // Logic to delete the book with the specified ID
+    setPopupMessage(`Are you sure you want to delete ${books.find((book) => book.id === bookId).book_title}?`);
     const updatedBooks = books.filter((book) => book.id !== bookId);
-
     setBooks(updatedBooks);
   };
 
   return (
     <div>
-      
-
+      <Navbar darktheme={true}/>
       <div>
-        <h2>Admin Dashboard</h2>
-
         <div>
           <h3>Add Book</h3>
           <button onClick={() => openModal()}>Add Book</button>
         </div>
-
         <div>
           <h3>Edit Book</h3>
           <ul>
@@ -111,10 +102,8 @@ const ManageBooks = () => {
             ))}
           </ul>
         </div>
-
         <div>
           <h3>Delete Book</h3>
-
           <ul>
             {books.map((book) => (
               <li key={book.id}>
@@ -127,8 +116,6 @@ const ManageBooks = () => {
           </ul>
         </div>
       </div>
-
-      {/* Modal */}
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
@@ -188,6 +175,14 @@ const ManageBooks = () => {
               </button>
               <button onClick={closeModal}>Cancel</button>
             </div>
+          </div>
+        </div>
+      )}
+      {popupMessage && (
+        <div className="popup">
+          <div className="popup-content">
+            <p>{popupMessage}</p>
+            <button onClick={() => setPopupMessage('')}>Close</button>
           </div>
         </div>
       )}

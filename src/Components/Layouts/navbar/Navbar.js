@@ -149,7 +149,10 @@ const Navbar = ({ darktheme, darktext }) => {
             <Link to="/profile" onClick={() => setIsProfileDropdownOpen(false)}>
               Profile
             </Link>
-            <a onClick={handleLogout}>Logout</a>
+            <Link to="/order" onClick={() => setIsProfileDropdownOpen(false)}>
+              Order
+            </Link>
+            <a  onClick={handleLogout}>Logout</a>
           </div>
         )}
         
@@ -168,9 +171,9 @@ const Navbar = ({ darktheme, darktext }) => {
       className={`navbar-container ${darktheme ? 'background-dark relative' : 'background-transparent'}`}
     >
       <div className="container flex justify-between align-center ">
-        <a href=''  className="logo">
+        <Link to='/'  className="logo">
           Book Store
-        </a>
+        </Link>
 
         {user ? showLogoutAndCart : showLogoutAndSignup}
       </div>

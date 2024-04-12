@@ -11,11 +11,16 @@ import BookDetailsPage from './pages/bookdetailspage/BookDetails';
 import Login from './pages/loginpage/Login';
 import Signup from './pages/loginpage/Signup';
 import app from './firebase/Firebase';
+import ManageOrder from './Components/adminpanel/ManageOrder';
 import CartPage from './pages/cartpage/CartPage';
 import Admin from './Components/adminpanel/login/Admin'
 import Profile from './pages/profile/Profile';
 import Dashboard from './Components/adminpanel/Dasbord'
+import AdminProfile from './Components/adminpanel/adminprofile/AdminProfile';
 import ManageBooks from './Components/adminpanel/Manage/ManageBooks';
+import Order from './Components/Layouts/orderhistory/Order';
+import ManageUsers from './Components/adminpanel/MangeUsers';
+
 
 
 
@@ -43,7 +48,7 @@ function App() {
         setAuthenticatedUser(user);
       } else{
         setAuthenticatedUser(null)
-      }})},[])
+      }})},[auth])
 
   useEffect(() =>{
    let total = 0;
@@ -67,10 +72,13 @@ function App() {
               <Route path='/signup' element={<Signup/>}/>
               <Route path='/login' element={<Login/>}/>  
               <Route path='/admin' element={<Admin/>}/> 
-              <Route path='/profile' element={<Profile/>}/> 
+              <Route path='/profile' element={<Profile/>}/>
+              <Route path='/orders' element={<ManageOrder/>}/>
+              <Route path='/users' element={<ManageUsers/>}/>
+              <Route path='/adminprofile' element={< AdminProfile/>}/>
+               <Route path='/order' element={< Order/>}/>
               <Route path='/dashboard' element = {<Dashboard/>}/>
               <Route path='/managebooks' element={<ManageBooks/>}/>
-                
          </Routes>
        </OrderContext.Provider>
      </userContext.Provider>

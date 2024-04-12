@@ -1,6 +1,16 @@
 .cart-items-container{
     padding: 5% 0;
 }
+.back-to-shopping{
+    cursor: pointer;
+   
+}
+.back-to-shopping:hover{
+    color: red;
+}
+
+
+
 
 
 
