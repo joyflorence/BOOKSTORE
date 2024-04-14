@@ -39,6 +39,10 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0)
   const [orderHistory, setOrderHistory] = useState([]);
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
   
 
 
@@ -60,7 +64,7 @@ function App() {
   return ( 
     <Router>
      <ScrollToTop>
-     <CartContext.Provider value={{cartItems, totalAmount, setCartItems}}>
+     <CartContext.Provider value={{cartItems, totalAmount, setCartItems,clearCart}}>
       < userContext.Provider value = {authenticatedUser}>
        <OrderContext.Provider value={{ orderHistory, setOrderHistory }}>
        <Routes>
